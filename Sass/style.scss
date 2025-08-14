@@ -1,0 +1,406 @@
+// import file to font app
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@700&display=swap");
+
+// import file to media cwery
+@import "_breakpoints.scss";
+
+// import create Custom-Scrollbars-&-Selection-color
+@import "_Custom-Scrollbars-&-Selection-color.scss";
+
+// import containerScreen
+@import "_containerScreen.scss";
+/*! start variables*/
+$colorNormal: #ffffff;
+
+$color-header-user-input: #ffffff;
+
+$color-text-button: #444b5a;
+$bg-button: #eae3dc;
+$bg-button-shadow: #b4a597;
+
+$bg-page: #3a4764;
+
+$bg-user-input: #182034;
+$bg-grid-container: #232c43;
+
+$bg-delete-reset: #637097;
+$bg-delete-reset-shadow: #404e72;
+
+$bg-equals-radio: #d03f2f;
+$bg-equals-shadow: #93261a;
+
+/*! end variables*/
+/*! ---------------------------------------- */
+/*! start Global Rules*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+  line-height: 1.15;
+}
+body {
+  font-family: "League Spartan", sans-serif;
+  background-color: $bg-page;
+}
+
+/*! end Global Rules*/
+/*! ---------------------------------------- */
+/*! start code */
+%calculator {
+  .app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 460px;
+    padding: 20px;
+    margin: 120px auto;
+    .header {
+      height: 80px;
+      width: 100%;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .chenge-theme {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        h6 {
+          font-size: 12px;
+        }
+        .input {
+          padding: 10px 12px;
+          border-radius: 50px;
+          position: relative;
+          width: 80px;
+          height: 26px;
+          input {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            position: absolute;
+            top: 6px;
+            width: 15px;
+            height: 15px;
+            border-radius: 30px;
+            transition: 0.5s;
+            cursor: pointer;
+          }
+          input[id="theme1"] {
+            left: 12px;
+          }
+          input[id="theme2"] {
+            left: 32px;
+          }
+          input[id="theme3"] {
+            left: 52px;
+          }
+
+          label {
+            position: absolute;
+            top: -20px;
+          }
+          label[for="theme1"] {
+            left: 16px;
+          }
+          label[for="theme2"] {
+            left: 35px;
+          }
+          label[for="theme3"] {
+            left: 58px;
+          }
+        }
+      }
+    }
+    .user-input {
+      height: 80px;
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      text-align: right;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      padding-right: 10px;
+      overflow: hidden;
+      .previous-operand {
+        font-size: 14px;
+      }
+      .current-operand {
+        font-size: 22px;
+      }
+    }
+    .grid-container {
+      display: grid;
+      justify-content: center;
+      align-items: center;
+      grid-template-columns: repeat(4, 100px);
+      grid-template-rows: repeat(5, 70px);
+      padding: 15px 10px;
+      border-radius: 10px;
+      button {
+        cursor: pointer;
+        font: {
+          size: 38px;
+          weight: 700;
+          family: "League Spartan", sans-serif;
+        }
+        margin: 0 8px;
+        padding: 8px 0;
+        border-radius: 5px;
+        border: none;
+        &:nth-child(17),
+        &:nth-child(4) {
+          font-size: 18px;
+          padding: 17px 0;
+        }
+        &:active {
+          transform: translateY(2px);
+        }
+      }
+      .column-span {
+        grid-column: span 2;
+      }
+    }
+    @include media("<=480px") {
+      width: 340px;
+      .grid-container {
+        grid-template-columns: repeat(4, 70px);
+      }
+    }
+    @include media("<=phone") {
+      width: 280px;
+      .grid-container {
+        grid-template-columns: repeat(4, 55px);
+      }
+    }
+  }
+  /*! start Attribution */
+  .attribution {
+    position: absolute;
+    bottom: 4%;
+    a {
+      font-size: smaller;
+      text-decoration: none;
+      text-transform: capitalize;
+      font: {
+        size: 12px;
+        weight: 700;
+      }
+      white-space: nowrap;
+      &:hover::after {
+        font-family: "Font Awesome 6 Free";
+        font-weight: 600;
+        content: "\f0a9";
+        font-size: 12px;
+        padding: 0 8px;
+      }
+    }
+    @include media("<=380px") {
+      white-space: break-spaces;
+      line-height: 2;
+      left: -30px;
+    }
+  }
+  /*! end Attribution */
+}
+/*! ---------------------------------------- */
+/*! start code style theme 1*/
+#theme_one {
+  background-color: $bg-page;
+  @extend %calculator;
+  .app {
+    .header {
+      color: $color-header-user-input;
+      .chenge-theme {
+        .input {
+          background-color: $bg-grid-container;
+          input {
+            &:checked {
+              background-color: $bg-equals-radio;
+            }
+          }
+        }
+      }
+    }
+    .user-input {
+      background-color: $bg-user-input;
+      color: $color-header-user-input;
+    }
+    .grid-container {
+      background-color: $bg-grid-container;
+      button {
+        background-color: $bg-button;
+        color: $color-text-button;
+        box-shadow: 0 5px $bg-button-shadow;
+        &:nth-child(17),
+        &:nth-child(4) {
+          background-color: $bg-delete-reset;
+          box-shadow: 0 5px $bg-delete-reset-shadow;
+          color: $colorNormal;
+        }
+        &:nth-child(18) {
+          background-color: $bg-equals-radio;
+          box-shadow: 0 5px $bg-equals-shadow;
+          color: $colorNormal;
+        }
+      }
+    }
+  }
+  .attribution {
+    color: $bg-grid-container;
+    a {
+      color: $bg-equals-radio;
+    }
+  }
+}
+/*! end code style theme 1*/
+/*! ---------------------------------------- */
+/*! start code style theme 2*/
+#theme_two {
+  $colorNormal: #ffffff;
+
+  $color-header-user-input: #35352c;
+
+  $color-text-button: #35352c;
+  $bg-button: #e5e4e1;
+  $bg-button-shadow: #a69d91;
+
+  $bg-page: #e6e6e6;
+
+  $bg-user-input: #dbdbdb;
+  $bg-grid-container: #d1cccc;
+
+  $bg-delete-reset: #377f86;
+  $bg-delete-reset-shadow: #1b5f65;
+
+  $bg-equals-radio: #ca5502;
+  $bg-equals-shadow: #893901;
+  @extend %calculator;
+  background-color: $bg-page;
+  .app {
+    .header {
+      color: $color-header-user-input;
+      .chenge-theme {
+        .input {
+          background-color: $bg-grid-container;
+          input {
+            &:checked {
+              background-color: $bg-equals-radio;
+            }
+          }
+        }
+      }
+    }
+    .user-input {
+      background-color: $bg-user-input;
+      color: $color-header-user-input;
+    }
+    .grid-container {
+      background-color: $bg-grid-container;
+      button {
+        background-color: $bg-button;
+        color: $color-text-button;
+        box-shadow: 0 5px $bg-button-shadow;
+        &:nth-child(17),
+        &:nth-child(4) {
+          background-color: $bg-delete-reset;
+          box-shadow: 0 5px $bg-delete-reset-shadow;
+          color: $colorNormal;
+        }
+        &:nth-child(18) {
+          background-color: $bg-equals-radio;
+          box-shadow: 0 5px $bg-equals-shadow;
+          color: $colorNormal;
+        }
+      }
+    }
+  }
+  .attribution {
+    color: $color-header-user-input;
+    a {
+      color: $bg-equals-radio;
+    }
+  }
+}
+/*! end code style theme 2*/
+/*! ---------------------------------------- */
+/*! start code style theme 3*/
+#theme_there {
+  $colorNormal: #ffffff;
+
+  $color-header-user-input: #ffe53d;
+
+  $color-text-button: #ffe53d;
+  $bg-button: #58077d;
+  $bg-button-shadow: #bc15f4;
+
+  $bg-page: #160628;
+
+  $bg-user-input: #1d0934;
+  $bg-grid-container: #1d0934;
+
+  $bg-delete-reset: #341c4f;
+  $bg-delete-reset-shadow: #871c9c;
+
+  $bg-equals-radio: #00e0d1;
+  $bg-equals-shadow: #6cf9f2;
+  background-color: $bg-page;
+
+  @extend %calculator;
+  .app {
+    .header {
+      color: $color-header-user-input;
+      .chenge-theme {
+        .input {
+          background-color: $bg-grid-container;
+          input {
+            &:checked {
+              background-color: $bg-equals-radio;
+            }
+          }
+        }
+      }
+    }
+    .user-input {
+      background-color: $bg-user-input;
+      color: $color-header-user-input;
+    }
+    .grid-container {
+      background-color: $bg-grid-container;
+      button {
+        background-color: $bg-button;
+        color: $color-text-button;
+        box-shadow: 0 5px $bg-button-shadow;
+        &:nth-child(17),
+        &:nth-child(4) {
+          background-color: $bg-delete-reset;
+          box-shadow: 0 5px $bg-delete-reset-shadow;
+          color: $colorNormal;
+        }
+        &:nth-child(18) {
+          background-color: $bg-equals-radio;
+          box-shadow: 0 5px $bg-equals-shadow;
+          color: $colorNormal;
+        }
+      }
+    }
+  }
+  .attribution {
+    color: $color-header-user-input;
+    a {
+      color: $bg-equals-radio;
+    }
+  }
+}
+/*! end code style theme 3*/
+/*! ---------------------------------------- */
+/*! end code */
