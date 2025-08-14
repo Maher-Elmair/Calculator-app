@@ -60,7 +60,7 @@ body {
     justify-content: center;
     width: 460px;
     padding: 20px;
-    margin: 120px auto;
+    margin: 90px auto 0;
     .header {
       height: 80px;
       width: 100%;
@@ -186,7 +186,7 @@ body {
   /*! start Attribution */
   .attribution {
     position: absolute;
-    bottom: 4%;
+    bottom: 2%;
     a {
       font-size: smaller;
       text-decoration: none;
@@ -208,6 +208,8 @@ body {
       white-space: break-spaces;
       line-height: 2;
       left: -30px;
+      bottom: 0%;
+      text-align: center;
     }
   }
   /*! end Attribution */

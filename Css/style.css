@@ -108,7 +108,7 @@ body {
   justify-content: center;
   width: 460px;
   padding: 20px;
-  margin: 120px auto;
+  margin: 90px auto 0;
 }
 #theme_there .app .header, #theme_two .app .header, #theme_one .app .header {
   height: 80px;
@@ -233,7 +233,7 @@ body {
 }
 #theme_there .attribution, #theme_two .attribution, #theme_one .attribution {
   position: absolute;
-  bottom: 4%;
+  bottom: 2%;
 }
 #theme_there .attribution a, #theme_two .attribution a, #theme_one .attribution a {
   font-size: smaller;
@@ -255,6 +255,8 @@ body {
     white-space: break-spaces;
     line-height: 2;
     left: -30px;
+    bottom: 0%;
+    text-align: center;
   }
 }
 
